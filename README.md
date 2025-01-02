@@ -1,4 +1,4 @@
-# Amnezia VPN
+# Amnezia VPN (for Android-TV)
 
 ### _The best client for self-hosted VPN_
 
