@@ -9,7 +9,7 @@ env:
 
 jobs:
   Build-Linux-Ubuntu:
-    runs-on: wsl
+    runs-on: [self-hosted, Linux, wsl]
 
     env:
       QT_VERSION: 6.6.2
@@ -78,7 +78,7 @@ jobs:
 # ------------------------------------------------------
 
   Build-Windows:
-    runs-on: DESKTOP-H7TK94N
+    runs-on: [self-hosted, Windows]
 
     env:
       QT_VERSION: 6.6.2
@@ -147,7 +147,7 @@ jobs:
 # ------------------------------------------------------
 
   Build-Android:
-    runs-on: wsl
+    runs-on: [self-hosted, Linux, wsl]
 
     env:
       ANDROID_BUILD_PLATFORM: android-34
@@ -304,7 +304,7 @@ jobs:
         retention-days: 7
 
   Extra:
-    runs-on: wsl
+    runs-on: [self-hosted, Linux, wsl]
     steps:
       - name: Search a corresponding PR
         uses: octokit/request-action@v2.x
