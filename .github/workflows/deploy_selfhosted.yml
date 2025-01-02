@@ -78,7 +78,7 @@ jobs:
 # ------------------------------------------------------
 
   Build-Windows:
-    runs-on: self-hosted
+    runs-on: DESKTOP-H7TK94N
 
     env:
       QT_VERSION: 6.6.2
