@@ -98,12 +98,25 @@ jobs:
       run: | 
         mkdir keystore
 
-    - name: 'Getting keystore'
-      uses: actions/checkout@v3  
-      with:
-        repository: amnezia-vpn/amnezia-android-certificates
-        ssh-key: ${{ secrets.ANDROID_CERTS_SSH_PRIVATE_KEY }}
-        path: keystore
+    - name: 'Create Keystore'
+      run: | 
+        echo "Creating keystore..."
+        cd keystore
+        keytool -genkeypair -v -keystore my-release-key.keystore -alias myAlias -keyalg RSA -keysize 2048 -validity 10000 \
+        -dname "CN=Your Name, OU=Your Organization Unit, O=Your Organization, L=Your City, S=Your State, C=Your Country" \
+        -storepass ${{ secrets.KEYSTORE_PASSWORD }} \
+        -keypass ${{ secrets.KEY_PASSWORD }}
+        cd ..
+      env:
+          KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
+          KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
+
+   # - name: 'Getting keystore'
+   #   uses: actions/checkout@v3  
+   #   with:
+   #     repository: amnezia-vpn/amnezia-android-certificates
+   #     ssh-key: ${{ secrets.ANDROID_CERTS_SSH_PRIVATE_KEY }}
+   #     path: keystore
 
     - name: 'Setup ccache'
       uses: hendrikmuhs/ccache-action@v1.2
