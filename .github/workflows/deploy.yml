@@ -1,9 +1,9 @@
 name: 'Deploy workflow'
 
 on:
-  push:
-    branches:
-      - '**'
+  workflow_dispatch:
+    #branches:
+    #  - '**'
 
 env:
   QT_MIRROR: https://mirrors.ocf.berkeley.edu/qt/ # https://download.qt.io/static/mirrorlist/
